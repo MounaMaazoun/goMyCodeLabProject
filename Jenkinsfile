@@ -4,7 +4,7 @@ pipeline{
         stage("Clone repository") {
             steps {
                 echo "Clone repository"
-                checkout scm
+                //checkout scm
                 script {
                     env.MY_GIT_TAG = sh(returnStdout: true, script: "git tag -l --points-at HEAD")
                 }
