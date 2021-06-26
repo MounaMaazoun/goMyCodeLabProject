@@ -1,14 +1,15 @@
 # Stage 1: Compile and Build angular codebase
 
 # Use official node image as the base image
-FROM node:alpine as build
+FROM node:6-alpine as build
 
 # Set the working directory
 WORKDIR /usr/local/app
 
 # Add the source code to app
 COPY ./package*.json /usr/local/app/
-
+RUN apk add --update python make g++\
+   && rm -rf /var/cache/apk/*
 # Install all the dependencies
 RUN npm install
 
